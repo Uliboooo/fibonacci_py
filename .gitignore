@@ -1,0 +1,5 @@
+/build/
+/dist/
+/csv_files/
+*.spec
+/tempCodeRunnerFile.py
