@@ -3,3 +3,4 @@
 /csv_files/
 *.spec
 /tempCodeRunnerFile.py
+.DS_Store
