@@ -4,7 +4,7 @@ import sys
 
 def write_csv(n, count, file_name):
     with open(file_name, 'a') as c:
-        c.write(str(count) + "," + str(n) + ",\n")
+        c.write(str(count) + "," + str(n) + "\n")
         print("\r" + str(count) + "回書き込み", end="")
 
 while True:
@@ -29,12 +29,12 @@ while True:
         os.makedirs(f"{parent_path}/csv_files", exist_ok=True)
         csv_file_title = f"{parent_path}/csv_files/{csv_file_title}"
         with open(csv_file_title, 'w') as f:
-            f.write("time,value,\n")
+            f.write("time,value\n")
     else:
         os.makedirs("csv_files", exist_ok=True)
         csv_file_title = f"csv_files/{csv_file_title}"
         with open(csv_file_title, 'w') as f:
-            f.write("time,value,\n")
+            f.write("time,value\n")
     # 演算
     count = 1
     for i in range(time_cal - 2):
