@@ -12,9 +12,7 @@ while True:
     print("1. n番目を求めますか?\n2. n番目番目まで全ての値を求めますか?\n1か2を入力してください。")
     All_cal = False
     chosen_input = input()
-    if chosen_input == "1":
-        All_cal = False
-    else:
+    if chosen_input != "1":
         All_cal = True
     print("nの値を入力してください。")
     time_cal = int(input())
@@ -23,18 +21,19 @@ while True:
     csv_file_title = f"fibonacci_{datetime.datetime.now().strftime('%m_%d_%H:%M:%S')}.csv"
     # パスの設定
     if getattr(sys, 'frozen', False):
-        executable_path = sys.executable
-        parent_path = os.path.dirname(executable_path)
+        parent_path = os.path.dirname(sys.executable)
         # ファイルフォルダ作成
-        os.makedirs(f"{parent_path}/csv_files", exist_ok=True)
-        csv_file_title = f"{parent_path}/csv_files/{csv_file_title}"
-        with open(csv_file_title, 'w') as f:
-            f.write("time,value\n")
+        if All_cal == True:
+            os.makedirs(f"{parent_path}/csv_files", exist_ok=True)
+            csv_file_title = f"{parent_path}/csv_files/{csv_file_title}"
+            with open(csv_file_title, 'w') as f:
+                f.write("time,value\n")
     else:
-        os.makedirs("csv_files", exist_ok=True)
-        csv_file_title = f"csv_files/{csv_file_title}"
-        with open(csv_file_title, 'w') as f:
-            f.write("time,value\n")
+        if All_cal == True:
+            os.makedirs("csv_files", exist_ok=True)
+            csv_file_title = f"csv_files/{csv_file_title}"
+            with open(csv_file_title, 'w') as f:
+                f.write("time,value\n")
     # 演算
     count = 1
     for i in range(time_cal - 2):
